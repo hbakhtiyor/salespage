@@ -38,11 +38,14 @@ function portfolioSetup() {
 
 $(window).load(function() { 
 	var hostname = window.location.hostname;
-	document.title = hostname + ' is for sale!';
-	emailContact = $("#emailcontact");
-	emailContact.text("info@" + hostname);
-	emailContact.attr('href', "mailto:info@" + hostname);
-	$("#domaintitle").text(hostname);
+	if (hostname) {
+		hostname = hostname.replace(/^www\./i, '');
+		document.title = hostname + ' is for sale!';
+		emailContact = $("#emailcontact");
+		emailContact.text("info@" + hostname);
+		emailContact.attr('href', "mailto:info@" + hostname);
+		$("#domaintitle").text(hostname);
+	}
 	screenHeight = $(window).height();
 	portfolio = $('#portfolio');
 	domainList = $('#domains');
