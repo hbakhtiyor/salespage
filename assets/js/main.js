@@ -101,6 +101,9 @@ $(function() {
 	offerForm.validate({
 		submitHandler: function(form) {
 			var formData = offerForm.serialize();
+			var hostname = window.location.hostname.replace(/^www\./i, '');
+			formData = formData + "&domain=" + hostname;
+
 			// Disable send button and show loading indicator
 			$('.send-btn').attr('value', 'sending');
 			$('.send-btn').attr('disabled', 'disabled');
